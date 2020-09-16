@@ -1,0 +1,64 @@
+<html>
+
+    <head></head>
+
+        <body>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.20.0/firebase-database.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyC1AUFtsuLgs0321RQQ4VA-lTMVXQ_9XZc",
+    authDomain: "checkup-32b3a.firebaseapp.com",
+    databaseURL: "https://checkup-32b3a.firebaseio.com",
+    projectId: "checkup-32b3a",
+    storageBucket: "checkup-32b3a.appspot.com",
+    messagingSenderId: "225613174812",
+    appId: "1:225613174812:web:6fe9fc8a152f85b23167d9"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+
+
+  function writeData()
+  {
+      firebase.database().ref("User").push({
+
+            name: document.getElementById("name").value,
+            age : document.getElementById("age").value
+        });
+  }
+  /*
+  function querry()
+  {
+    firebase.database().ref("/").once('value',function(snapshot){
+      snapshot.forEach(function(childSnapshot)
+      {
+            console.log(firebase.projectId)
+            var childKey=childSnapshot.key;
+            var childData=childSnapshot.val();
+            document.getElementById("data").innerHTML=childData['name']+","+childData['age'];
+      })
+
+    })
+  }
+*/
+  
+</script>
+
+    <h1>Firebase Sample Example</h1>
+    <input type="text" placeholder="isim" id="name">
+    <input type="text" placeholder="yas" id="age">
+    <button onclick="writeData(),querry()">Kaydet</button>
+    <p id="data"></p>
+
+</body>
+
+</html>
